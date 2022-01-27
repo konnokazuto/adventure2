@@ -1,12 +1,14 @@
 <template>
   <div>
     hoge
-    <InputText @on-input="onInput" />
-    <Label :text="labelValue" />
+    {{ store.name }}
+    <AtomsInputText @on-input="onInput" />
+    <AtomsLabel :text="labelValue" />
   </div>
 </template>
 
 <script setup lang="ts">
+import { useStore } from "@/store/store";
 const labelValue = ref("");
 const { labelText, updateLabel } = useLabelValue();
 const onInput = (text: string) => {
@@ -15,4 +17,5 @@ const onInput = (text: string) => {
 const onClickLink = () => {
   updateLabel(labelValue.value);
 };
+const store = useStore();
 </script>
